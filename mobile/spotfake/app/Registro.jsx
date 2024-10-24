@@ -1,40 +1,45 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, Image } from 'react-native';
+import React, { useState } from "react";
+import { View, Text, TextInput, Pressable, StyleSheet, Image } from "react-native";
+import { Link } from "expo-router"
 
 const TelaRegistro = () => {
-    const [nome, setNome] = useState('');
-    const [sobreNome, setSobreNome] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [dataNascimento, setDataNascimento] = useState('');
+    const [nome, setNome] = useState("");
+    const [sobreNome, setSobreNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [dataNascimento, setDataNascimento] = useState("");
+    const [signupStatus, setSignupStatus] = useState("/Registro");
 
     const handleSignup = async () => {
       try {
-          const response = await fetch('http://localhost:8000/registro', {
-              method: 'POST',
+          const response = await fetch("http://localhost:8000/registro", {
+              method: "POST",
               headers: {
-                  'Content-Type': 'application/json',
+                  "Content-Type": "application/json",
+                  "Accept":"*/*",
               },
               body: JSON.stringify({
-                  nome: nome, 
-                  sobrenome: sobreNome,
-                  email: email,
-                  senha: password,
-                  dataNascimento: dataNascimento,
+                  "nome": nome, 
+                  "sobreNome": sobreNome,
+                  "email": email,
+                  "senha": password,
+                  "dataNascimento": dataNascimento,
               }),
           });
 
           const message = await response.text();
           alert(message);
+          setSignupStatus("/Login");
+
       } catch (error) {
-          console.error('Error during signup:', error);
-          alert('Erro ao criar usuário');
+          console.error("Error during signup:", error);
+          alert("Erro ao criar usuário");
       }
   };
     
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/images/intermusic_logo.png')} style={styles.logo}/>
+      <Image source={require("../assets/images/intermusic_logo.png")} style={styles.logo}/>
       <Text style={styles.title}>Registrar</Text>
         <TextInput
             style={styles.input}
@@ -69,12 +74,19 @@ const TelaRegistro = () => {
             placeholder="Data de Nascimento"
             value={dataNascimento}
             onChangeText={setDataNascimento}
-            keyboardType="numeric"
-            maxLength={10}
+            keyboardType="default"
         />
+        <Link href={`http://localhost:8081/${signupStatus}`}>
         <Pressable onPress={handleSignup} style={styles.pressable}>
-          <Text style={styles.pressable_text}>SignIn</Text>
+          <Text style={styles.pressable_text}>SignUp</Text>
         </Pressable>
+        </Link>
+
+        <Link href={`http://localhost:8081/Login`}>
+            <Pressable style={styles.link_pressable}>
+            <Text style={styles.pressable_text}>Entrar</Text>
+            </Pressable>
+        </Link>
     </View>
   );
 };
@@ -83,39 +95,45 @@ const TelaRegistro = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     padding: 16,
-    alignItems: 'center',
+    alignItems: "center",
   },
   title: {
     fontSize: 24,
     marginBottom: 16,
-    textAlign: 'center',
+    textAlign: "center",
   },
   input: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 1,
     marginBottom: 12,
     paddingHorizontal: 8,
-    color: 'red',
+    color: "red",
   },
   pressable: {
     height: 40,
     width: 300,
     backgroundColor: "red",
     borderRadius: 5,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   pressable_text: {
     fontSize: 18,
     color: "white",
-    textAlign: 'center',
-    fontWeight: 'bold',
+    textAlign: "center",
+    fontWeight: "bold",
   },
   logo: {
     width: 250,
     height: 250,
+  },
+  link_pressable: {
+    height: 30,
+    width: 300,
+    backgroundColor: "red",
+    justifyContent: "center",
   }
 });
 
