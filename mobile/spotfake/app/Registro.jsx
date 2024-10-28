@@ -96,9 +96,6 @@ const TelaRegistro = () => {
 
 
 const styles = StyleSheet.create({
-  Text: {
-    fontFamily: "SpaceMono"
-  },
   container: {
     flex: 1,
     justifyContent: "center",
