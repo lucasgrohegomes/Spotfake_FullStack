@@ -24,7 +24,8 @@ app.post('/registro', async (req, res) => {
     }
     const senhaCriptografada = bcryptjs.hashSync(senha,10)
     const Registrar = await User.create({nome, sobreNome, email, senha:senhaCriptografada, dataNascimento})
-    
+
+    res.send('Usuario registrado com sucesso!')
 })
 
 // --------- LogIn
@@ -59,7 +60,6 @@ app.post('/login', async (req, res) => {
             {expiresIn: 1000*60*5}
     )
 
-    console.log(token)
     res.send('Usuario logado com sucesso!')
 })
 
