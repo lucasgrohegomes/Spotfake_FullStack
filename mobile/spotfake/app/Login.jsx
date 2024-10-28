@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Pressable, StyleSheet, Image, ScrollView } from "react-native";
+import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
 import { Link } from "expo-router";
 import { useFonts } from "expo-font";
 import styles from "./Style";
