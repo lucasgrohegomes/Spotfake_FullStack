@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, StyleSheet, Image } from "react-native";
-import { Link } from "expo-router"
+import { Link, router } from "expo-router"
 
 const TelaRegistro = () => {
     const [nome, setNome] = useState("");
@@ -8,6 +8,7 @@ const TelaRegistro = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [dataNascimento, setDataNascimento] = useState("");
+
     const [signupStatus, setSignupStatus] = useState("/Registro");
 
     const handleSignup = async () => {
@@ -34,6 +35,9 @@ const TelaRegistro = () => {
       } catch (error) {
           console.error("Error during signup:", error);
           alert("Erro ao criar usuário");
+      }
+      finally {
+        router.navigate(signupStatus);
       }
   };
     
@@ -76,15 +80,14 @@ const TelaRegistro = () => {
             onChangeText={setDataNascimento}
             keyboardType="default"
         />
-        <Link href={`http://localhost:8081/${signupStatus}`}>
+
         <Pressable onPress={handleSignup} style={styles.pressable}>
           <Text style={styles.pressable_text}>SignUp</Text>
         </Pressable>
-        </Link>
-
+        
         <Link href={`http://localhost:8081/Login`}>
             <Pressable style={styles.link_pressable}>
-            <Text style={styles.pressable_text}>Entrar</Text>
+              <Text style={styles.link_text}>Entrar</Text>
             </Pressable>
         </Link>
     </View>
@@ -93,6 +96,9 @@ const TelaRegistro = () => {
 
 
 const styles = StyleSheet.create({
+  Text: {
+    fontFamily: "SpaceMono"
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -106,6 +112,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
+    width: 300,
     borderColor: "#ccc",
     borderWidth: 1,
     marginBottom: 12,
@@ -131,9 +138,17 @@ const styles = StyleSheet.create({
   },
   link_pressable: {
     height: 30,
-    width: 300,
+    width: 150,
     backgroundColor: "red",
     justifyContent: "center",
+    marginTop: 20,
+    borderRadius: 5,
+  },
+  link_text: {
+    fontSize: 14,
+    color: "white",
+    fontWeight: "300",
+    textAlign: "center",
   }
 });
 

@@ -53,8 +53,7 @@ const TelaLogin = () => {
 
         <Link href={"http://localhost:8081/Registro"}>
             <Pressable style={styles.link_pressable}>
-            <Text style={styles.pressable_text}>Registrar</Text>
-      
+            <Text style={styles.link_text}>Registrar</Text>
             </Pressable>
         </Link>
     </View>
@@ -62,6 +61,9 @@ const TelaLogin = () => {
 };
 
 const styles = StyleSheet.create({
+  Text: {
+    fontFamily: "SpaceMono"
+  },
   container: {
     flex: 1,
     justifyContent: "center",
@@ -75,6 +77,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
+    width: 300,
     borderColor: "#ccc",
     borderWidth: 1,
     marginBottom: 12,
@@ -100,9 +103,17 @@ const styles = StyleSheet.create({
   },
   link_pressable: {
     height: 30,
-    width: 300,
+    width: 150,
     backgroundColor: "red",
     justifyContent: "center",
+    marginTop: 20,
+    borderRadius: 5,
+  },
+  link_text: {
+    fontSize: 14,
+    color: "white",
+    fontWeight: "300",
+    textAlign: "center",
   }
 });
 
