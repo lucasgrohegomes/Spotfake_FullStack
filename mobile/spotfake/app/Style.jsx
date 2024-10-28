@@ -2,8 +2,15 @@ import React from "react";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    outer_container: {
+      flex: 1,
+      backgroundColor: "#E31E1E",
+      alignItems: "center",
+    },
     container: {
       flex: 1,
+      backgroundColor: "white",
+      width: 600,
       justifyContent: "center",
       padding: 16,
       alignItems: "center",
@@ -25,7 +32,7 @@ const styles = StyleSheet.create({
     pressable: {
       height: 40,
       width: 300,
-      backgroundColor: "red",
+      backgroundColor: "#E31E1E",
       borderRadius: 5,
       justifyContent: "center",
     },
@@ -33,6 +40,7 @@ const styles = StyleSheet.create({
       fontSize: 18,
       color: "white",
       textAlign: "center",
+      fontFamily: "DancingScript",
       fontWeight: "bold",
     },
     logo: {
@@ -42,7 +50,7 @@ const styles = StyleSheet.create({
     link_pressable: {
       height: 30,
       width: 150,
-      backgroundColor: "red",
+      backgroundColor: "#E31E1E",
       justifyContent: "center",
       marginTop: 20,
       borderRadius: 5,
@@ -52,7 +60,7 @@ const styles = StyleSheet.create({
       color: "white",
       textAlign: "center",
       fontFamily: "DancingScript",
-      fontWeight: "Bold",
+      fontWeight: "bold",
     }
   });
 

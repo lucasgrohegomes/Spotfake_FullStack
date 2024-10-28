@@ -47,7 +47,8 @@ const TelaRegistro = () => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.scrollview}>
+      <View style={styles.outer_container}>
       <View style={styles.container}>
         <Image source={require("../assets/images/intermusic_logo.png")} style={styles.logo} />
         <Text style={styles.title}>Registrar</Text>
@@ -96,6 +97,7 @@ const TelaRegistro = () => {
             <Text style={styles.link_text}>Entrar</Text>
           </Pressable>
         </Link>
+      </View>
       </View>
     </ScrollView>
   )
