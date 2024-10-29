@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
 import { Link } from "expo-router";
-import { useFonts } from "expo-font";
-import styles from "./Style";
+import styles from "../Style/Style";
 
 const TelaLogin = () => {
-
-  const [loaded, error] = useFonts({
-    'DancingScript': require('../assets/fonts/DancingScript-VariableFont_wght.ttf'),
-  });
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,7 +35,7 @@ const TelaLogin = () => {
     <ScrollView style={styles.scrollview}>
       <View style={styles.outer_container}>
       <View style={styles.container}>
-        <Image source={require("../assets/images/intermusic_logo.png")} style={styles.logo} />
+        <Image source={require("../../assets/images/intermusic_logo.png")} style={styles.logo} />
         <Text style={styles.title}>Login</Text>
         <TextInput
           style={styles.input}
@@ -60,7 +55,7 @@ const TelaLogin = () => {
           <Text style={styles.pressable_text}>LogIn</Text>
         </Pressable>
 
-        <Link href={"http://localhost:8081/Registro"}>
+        <Link href={"http://localhost:8081/Auth/Registro"}>
           <Pressable style={styles.link_pressable}>
             <Text style={styles.link_text}>Registrar</Text>
           </Pressable>

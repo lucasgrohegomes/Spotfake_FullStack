@@ -55,4 +55,4 @@ const criarTabelas = () => {
     })
 }
 
-export { User, sequelize };
+export { User, criarTabelas };

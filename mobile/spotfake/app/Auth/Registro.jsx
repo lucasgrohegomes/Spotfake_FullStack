@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
 import { Link, router } from "expo-router";
-import { useFonts } from "expo-font";
-import styles from "./Style";
+import styles from "../Style/Style";
 
 const TelaRegistro = () => {
-
-  const [loaded, error] = useFonts({
-    'DancingScript': require('../assets/fonts/DancingScript-VariableFont_wght.ttf'),
-  });
 
   const [nome, setNome] = useState("");
   const [sobreNome, setSobreNome] = useState("");
@@ -33,7 +28,6 @@ const TelaRegistro = () => {
         }),
       });
 
-
       const message = await response.text();
       alert(message);
       if (message === "Usuario registrado com sucesso!") {
@@ -50,7 +44,7 @@ const TelaRegistro = () => {
     <ScrollView style={styles.scrollview}>
       <View style={styles.outer_container}>
       <View style={styles.container}>
-        <Image source={require("../assets/images/intermusic_logo.png")} style={styles.logo} />
+        <Image source={require("../../assets/images/intermusic_logo.png")} style={styles.logo} />
         <Text style={styles.title}>Registrar</Text>
         <TextInput
           style={styles.input}
@@ -92,7 +86,7 @@ const TelaRegistro = () => {
           <Text style={styles.pressable_text}>SignUp</Text>
         </Pressable>
 
-        <Link href={`http://localhost:8081/Login`}>
+        <Link href={`http://localhost:8081/Auth/Login`}>
           <Pressable style={styles.link_pressable}>
             <Text style={styles.link_text}>Entrar</Text>
           </Pressable>

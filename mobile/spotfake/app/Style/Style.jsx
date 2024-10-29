@@ -1,7 +1,9 @@
-import React from "react";
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    scrollview: {
+      backgroundColor: "#E31E1E",
+    },
     outer_container: {
       flex: 1,
       backgroundColor: "#E31E1E",
@@ -10,10 +12,12 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: "white",
-      width: 600,
+      width: 400,
       justifyContent: "center",
       padding: 16,
+      margin: 25,
       alignItems: "center",
+      borderRadius: 10,
     },
     title: {
       fontSize: 24,
@@ -28,6 +32,7 @@ const styles = StyleSheet.create({
       marginBottom: 12,
       paddingHorizontal: 8,
       color: "red",
+      borderRadius: 5,
     },
     pressable: {
       height: 40,
@@ -64,4 +69,6 @@ const styles = StyleSheet.create({
     }
   });
 
-  export default styles;
+  export default { fonts, styles };
+
+
