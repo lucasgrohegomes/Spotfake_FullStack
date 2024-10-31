@@ -4,11 +4,23 @@ const styles = StyleSheet.create({
     scrollview: {
       backgroundColor: "#E31E1E",
     },
+
     outer_container: {
       flex: 1,
       backgroundColor: "#E31E1E",
       alignItems: "center",
     },
+
+    main_container: {
+      flex: 1,
+      backgroundColor: "white",
+      width: 1300,
+      padding: 16,
+      margin: 25,
+      alignItems: "center",
+      borderRadius: 10,
+    },
+
     container: {
       flex: 1,
       backgroundColor: "white",
@@ -19,11 +31,13 @@ const styles = StyleSheet.create({
       alignItems: "center",
       borderRadius: 10,
     },
+
     title: {
       fontSize: 24,
       marginBottom: 16,
       textAlign: "center",
     },
+
     input: {
       height: 40,
       width: 300,
@@ -34,6 +48,7 @@ const styles = StyleSheet.create({
       color: "red",
       borderRadius: 5,
     },
+
     pressable: {
       height: 40,
       width: 300,
@@ -41,6 +56,7 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       justifyContent: "center",
     },
+
     pressable_text: {
       fontSize: 18,
       color: "white",
@@ -48,10 +64,12 @@ const styles = StyleSheet.create({
       fontFamily: "DancingScript",
       fontWeight: "bold",
     },
+
     logo: {
       width: 250,
       height: 250,
     },
+
     link_pressable: {
       height: 30,
       width: 150,
@@ -60,6 +78,7 @@ const styles = StyleSheet.create({
       marginTop: 20,
       borderRadius: 5,
     },
+
     link_text: {
       fontSize: 20,
       color: "white",
@@ -69,6 +88,6 @@ const styles = StyleSheet.create({
     }
   });
 
-  export default { fonts, styles };
+  export default styles;
 
 

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
 import { Link, router } from "expo-router";
+import { useFonts } from "expo-font";
 import styles from "../Style/Style";
 
 const TelaRegistro = () => {
-
+  const [loaded, error] = useFonts({
+    'DancingScript': require('../../assets/fonts/DancingScript-VariableFont_wght.ttf'),
+  });
   const [nome, setNome] = useState("");
   const [sobreNome, setSobreNome] = useState("");
   const [email, setEmail] = useState("");
@@ -13,7 +16,7 @@ const TelaRegistro = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await fetch("http://localhost:8000/registro", {
+      const response = await fetch("http://localhost:8000/autenticacao/registro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,7 +34,7 @@ const TelaRegistro = () => {
       const message = await response.text();
       alert(message);
       if (message === "Usuario registrado com sucesso!") {
-        router.push("/Login")
+        router.push("/Auth/Login")
       }
 
     } catch (error) {

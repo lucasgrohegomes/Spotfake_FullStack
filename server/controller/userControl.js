@@ -24,7 +24,7 @@ const DeleteUser = async (req, res) => {
         return
     }
     
-    const ByeUser = await User.destroy({ where: { email } })
+    const ByeUser = await User.destroy({ where: { email: email } })
     if (ByeUser) {
         res.send("Usuário deletado");
     } else {

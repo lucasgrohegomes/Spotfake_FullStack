@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
+import { useFonts } from "expo-font";
 import styles from "../Style/Style";
 
 const TelaLogin = () => {
-
+  const [loaded, error] = useFonts({
+    'DancingScript': require('../../assets/fonts/DancingScript-VariableFont_wght.ttf'),
+  });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignin = async () => {
     try {
-      const response = await fetch("http://localhost:8000/login", {
+      const response = await fetch("http://localhost:8000/autenticacao/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,6 +27,9 @@ const TelaLogin = () => {
 
       const message = await response.text();
       alert(message);
+      if (message === "Usuario logado com sucesso!") {
+        router.push("/Main/Home")
+      }
 
     } catch (error) {
       console.error("Error during login:", error);
