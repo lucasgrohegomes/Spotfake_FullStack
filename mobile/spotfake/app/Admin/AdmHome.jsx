@@ -3,7 +3,7 @@ import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-nativ
 import { useFonts } from "expo-font";
 import styles from "../Style/Style";
 
-const Home = () => {
+const AdmHome = () => {
     const [loaded, error] = useFonts({
         'DancingScript': require('../../assets/fonts/DancingScript-VariableFont_wght.ttf'),
       });
@@ -12,11 +12,11 @@ const Home = () => {
         <ScrollView style={styles.scrollview}>
             <View style={styles.outer_container}>
                 <View style={styles.main_container}>
-                    <Text>Aqui será inserida a página principal</Text>
+                    <Text>Aqui será inserida a página principal para os Admins</Text>
                 </View>
             </View>
         </ScrollView>
     )
 }
 
-export default Home;
+export default AdmHome;

@@ -30,6 +30,9 @@ const TelaLogin = () => {
       if (message === "Usuario logado com sucesso!") {
         router.push("/Main/Home")
       }
+      else if (message === "Admin logado com sucesso!") {
+        router.push("/Admin/AdmHome")
+      }
 
     } catch (error) {
       console.error("Error during login:", error);
