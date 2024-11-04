@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
 
     modal_scrollview: {
       backgroundColor: "white",
+      padding: 20,
     },
 
     outer_container: {

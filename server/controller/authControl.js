@@ -52,7 +52,7 @@ const SignIn = async (req, res) => {
         { expiresIn: 1000 * 60 * 5 }
     )
 
-    if(userExiste.email === "admin" && userExiste.email === "admin"){
+    if(userExiste.nome === "admin" && userExiste.email === "admin"){
         res.send('Admin logado com sucesso!')
     }
     else{
