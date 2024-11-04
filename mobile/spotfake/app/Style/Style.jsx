@@ -5,6 +5,10 @@ const styles = StyleSheet.create({
       backgroundColor: "#E31E1E",
     },
 
+    modal_scrollview: {
+      backgroundColor: "white",
+    },
+
     outer_container: {
       flex: 1,
       backgroundColor: "#E31E1E",
@@ -32,6 +36,13 @@ const styles = StyleSheet.create({
       borderRadius: 10,
     },
 
+    modal_container: {
+      flex: 1,
+      alignSelf: 'center',
+      justifyContent: "center",
+      alignItems: "center",
+    },
+
     title: {
       fontSize: 24,
       marginBottom: 16,
@@ -53,6 +64,7 @@ const styles = StyleSheet.create({
       height: 40,
       width: 300,
       backgroundColor: "#E31E1E",
+      margin: 10,
       borderRadius: 5,
       justifyContent: "center",
     },
