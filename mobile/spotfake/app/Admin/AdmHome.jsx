@@ -10,28 +10,59 @@ const AdmHome = () => {
 
     const [modalVisible, setModalVisible] = useState(false);
     const [modalContent, setModalContent] = useState(null);
+    const [modalData, setModalData] = useState(null);
+
+    const allUsers = async () => {
+        try {
+            const response = await fetch("http://localhost:8000/usuarios/todos", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*",
+                }
+            });
+            const message = await response.text()
+
+            setModalData(
+                <View>
+                    <Text>
+                        {message}
+                    </Text>
+                </View>
+            )
+
+        }
+        catch (error) {
+            console.error("Error during fetch:", error);
+            alert("Erro ao buscar usuários");
+        }
+    }
+
 
     //criar variavel para armazenar o conteudo da modal
 
     //criar uma função que modifica o conteudo da modal a partir do botao selecionado
 
-    const dadosModal = (botao) => {
+    const dadosModal = async (botao) => {
         switch (botao) {
+
             case "Todos":
+                await allUsers();
                 setModalContent(
-                    <Text style={styles.title}>
-                        Exibindo todos os usuários
-                    </Text>
+                    <View style={styles.container}>
+                        <Text style={styles.title}>Exibindo todos os usuários</Text>
+                        {modalData}
+                    </View>
                 )
-                break;
+                break
 
             case "Um":
                 setModalContent(
                     <Text style={styles.title}>
-                        Exibindo um usuário
+                        Exibindo um único usuário
                     </Text>
                 )
-                break;
+                break
 
             case "Deletar":
                 setModalContent(
@@ -58,7 +89,9 @@ const AdmHome = () => {
                 <ScrollView style={styles.modal_scrollview}>
                     <View style={styles.modal_container}>
                         {modalContent}
-                        <Pressable style={styles.pressable} onPress={() => setModalVisible(false)}>
+                        <Pressable style={styles.pressable} onPress={
+
+                            () => setModalVisible(false)}>
                             <Text style={styles.pressable_text}>Cancelar</Text>
                         </Pressable>
                     </View>
@@ -71,15 +104,21 @@ const AdmHome = () => {
                     <View style={styles.container}>
 
                         <Pressable style={styles.pressable}>
-                            <Text style={styles.pressable_text} onPress={() => dadosModal('Todos')}>Todos os Usuários</Text>
+                            <Text style={styles.pressable_text} onPress={
+                                () => dadosModal('Todos')
+                            }>Todos os Usuários</Text>
                         </Pressable>
 
                         <Pressable style={styles.pressable}>
-                            <Text style={styles.pressable_text} onPress={() => dadosModal('Um')}>Selecionar um Usuário</Text>
+                            <Text style={styles.pressable_text} onPress={
+                                () => dadosModal('Um')
+                            }>Selecionar um Usuário</Text>
                         </Pressable>
 
                         <Pressable style={styles.pressable}>
-                            <Text style={styles.pressable_text} onPress={() => dadosModal('Deletar')}>Deletar um Usuário</Text>
+                            <Text style={styles.pressable_text} onPress={
+                                () => dadosModal('Deletar')
+                            }>Deletar um Usuário</Text>
                         </Pressable>
                     </View>
                 </View>
@@ -87,5 +126,6 @@ const AdmHome = () => {
         </ScrollView>
     )
 }
+
 
 export default AdmHome;

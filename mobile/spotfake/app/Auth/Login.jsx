@@ -27,6 +27,8 @@ const TelaLogin = () => {
 
       const message = await response.text();
       alert(message);
+      
+      // Verificar se o a mensagem retornada é a de um admin logado
       if (message === "Usuario logado com sucesso!") {
         router.push("/Main/Home")
       }
