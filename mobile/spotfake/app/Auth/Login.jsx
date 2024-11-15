@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
 import { Link, router } from "expo-router";
 import { useFonts } from "expo-font";
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Importando o AsyncStorage
 import styles from "../Style/Style";
 
 const TelaLogin = () => {
@@ -28,11 +29,12 @@ const TelaLogin = () => {
       const message = await response.text();
       alert(message);
       
-      // Verificar se o a mensagem retornada é a de um admin logado
+
       if (message === "Usuario logado com sucesso!") {
-        router.push("/Main/Home")
-      }
-      else if (message === "Admin logado com sucesso!") {
+        await AsyncStorage.setItem('usuarioId', message.usuarioId);
+        router.push("/Main/Profile");
+
+      } else if (message === "Admin logado com sucesso!") {
         router.push("/Admin/AdmHome")
       }
 
@@ -45,33 +47,33 @@ const TelaLogin = () => {
   return (
     <ScrollView style={styles.scrollview}>
       <View style={styles.outer_container}>
-      <View style={styles.container}>
-        <Image source={require("../../assets/images/intermusic_logo.png")} style={styles.logo} />
-        <Text style={styles.title}>Login</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <Pressable onPress={handleSignin} style={styles.pressable}>
-          <Text style={styles.pressable_text}>LogIn</Text>
-        </Pressable>
-
-        <Link href={"http://localhost:8081/Auth/Registro"}>
-          <Pressable style={styles.link_pressable}>
-            <Text style={styles.link_text}>Registrar</Text>
+        <View style={styles.container}>
+          <Image source={require("../../assets/images/intermusic_logo.png")} style={styles.logo} />
+          <Text style={styles.title}>Login</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+          <Pressable onPress={handleSignin} style={styles.pressable}>
+            <Text style={styles.pressable_text}>LogIn</Text>
           </Pressable>
-        </Link>
-      </View>
+
+          <Link href={"http://localhost:8081/Auth/Registro"}>
+            <Pressable style={styles.link_pressable}>
+              <Text style={styles.link_text}>Registrar</Text>
+            </Pressable>
+          </Link>
+        </View>
       </View>
     </ScrollView>
   );

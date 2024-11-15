@@ -15,7 +15,7 @@ const First = () => {
                 <View style={styles.main_container}>
                     <Text style={styles.title}>Aqui será inserida a página principal</Text>
                     <Link href={`http://localhost:8081/Auth/Registro`}>
-                        <Pressable style={styles.link_pressable}> 
+                        <Pressable style={styles.link_pressable}>
                             <Text style={styles.link_text}>Cadastrar</Text>
                         </Pressable>
                     </Link>

@@ -46,55 +46,55 @@ const TelaRegistro = () => {
   return (
     <ScrollView style={styles.scrollview}>
       <View style={styles.outer_container}>
-      <View style={styles.container}>
-        <Image source={require("../../assets/images/intermusic_logo.png")} style={styles.logo} />
-        <Text style={styles.title}>Registrar</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Nome"
-          value={nome}
-          onChangeText={setNome}
-          keyboardType="default"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Sobrenome"
-          value={sobreNome}
-          onChangeText={setSobreNome}
-          keyboardType="default"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Data de Nascimento"
-          value={dataNascimento}
-          onChangeText={setDataNascimento}
-          keyboardType="default"
-        />
+        <View style={styles.container}>
+          <Image source={require("../../assets/images/intermusic_logo.png")} style={styles.logo} />
+          <Text style={styles.title}>Registrar</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Nome"
+            value={nome}
+            onChangeText={setNome}
+            keyboardType="default"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Sobrenome"
+            value={sobreNome}
+            onChangeText={setSobreNome}
+            keyboardType="default"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Data de Nascimento"
+            value={dataNascimento}
+            onChangeText={setDataNascimento}
+            keyboardType="default"
+          />
 
-        <Pressable onPress={handleSignup} style={styles.pressable}>
-          <Text style={styles.pressable_text}>SignUp</Text>
-        </Pressable>
-
-        <Link href={`http://localhost:8081/Auth/Login`}>
-          <Pressable style={styles.link_pressable}>
-            <Text style={styles.link_text}>Entrar</Text>
+          <Pressable onPress={handleSignup} style={styles.pressable}>
+            <Text style={styles.pressable_text}>SignUp</Text>
           </Pressable>
-        </Link>
-      </View>
+
+          <Link href={`http://localhost:8081/Auth/Login`}>
+            <Pressable style={styles.link_pressable}>
+              <Text style={styles.link_text}>Entrar</Text>
+            </Pressable>
+          </Link>
+        </View>
       </View>
     </ScrollView>
   )

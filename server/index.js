@@ -2,6 +2,7 @@ import Express from "express";
 import cors from "cors";
 import { AuthRoutes } from "./router/authRoutes.js"
 import { UserRoutes } from "./router/userRoutes.js"
+import { criarTabelas } from "./db.js";
 
 const app = Express()
 app.use(Express.json())
