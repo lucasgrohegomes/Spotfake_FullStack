@@ -10,8 +10,35 @@ const Profile = () => {
         'DancingScript': require('../../assets/fonts/DancingScript-VariableFont_wght.ttf'),
     });
 
+    const [image, setImage] = useState('')
+
+    const handleImagePickerPress = async() => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [1, 1],
+            quality: 1,
+        })
+
+        if (!result.canceled) {
+            setImage(result.assets[0].uri)
+        }
+    }
+
     return (
-        <></>
+        <View style={styles.outer_container}>
+            <View style={styles.main_container}>
+                { image && <Image source={{uri: image}} style={styles.image}/> }
+                <View>
+                    <Pressable style={styles.pressable} onPress={handleImagePickerPress}>
+                        <Text style={styles.pressable_text}>Open Picker</Text>
+                    </Pressable>
+                    <Pressable style={styles.pressable}>
+                        <Text style={styles.pressable_text}>Reset Image</Text>
+                    </Pressable>
+                </View>
+            </View>
+        </View>
     );
 };
 

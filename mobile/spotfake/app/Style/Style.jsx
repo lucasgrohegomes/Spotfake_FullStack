@@ -83,6 +83,12 @@ const styles = StyleSheet.create({
     height: 250,
   },
 
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 100,
+  },
+
   link_pressable: {
     height: 30,
     width: 150,
