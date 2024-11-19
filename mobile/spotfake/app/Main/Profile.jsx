@@ -33,7 +33,7 @@ const Profile = () => {
                     <Pressable style={styles.pressable} onPress={handleImagePickerPress}>
                         <Text style={styles.pressable_text}>Open Picker</Text>
                     </Pressable>
-                    <Pressable style={styles.pressable}>
+                    <Pressable style={styles.pressable} onPress={() => setImage('')}>
                         <Text style={styles.pressable_text}>Reset Image</Text>
                     </Pressable>
                 </View>
