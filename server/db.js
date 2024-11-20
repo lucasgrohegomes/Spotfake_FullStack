@@ -1,4 +1,4 @@
-import Sequelize from 'sequelize'
+import Sequelize, { DataTypes } from 'sequelize'
 
 const sequelize = new Sequelize(
     'spotfake',
