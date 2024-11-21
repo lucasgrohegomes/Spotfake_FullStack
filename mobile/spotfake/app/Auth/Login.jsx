@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
+import { Link, router } from "expo-router";
 import { useFonts } from "expo-font";
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Importando o AsyncStorage
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from "../Style/Style";
 
 const TelaLogin = () => {

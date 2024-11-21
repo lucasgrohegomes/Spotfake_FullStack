@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Pressable, Image } from "react-native";
+import { View, Text, Pressable, Image, TextInput } from "react-native";
 import { useFonts } from "expo-font";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from "../Style/Style";
@@ -12,6 +12,8 @@ const Profile = () => {
 
     const [image, setImage] = useState('')
     const [status, setStatus] = useState(null)
+    const [senhaAtual, setSenhaAtual] = useState('lucas')
+    const [novaSenha, setNovaSenha] = useState('')
 
     const saveImage = async () => {
         try {
@@ -58,7 +60,26 @@ const Profile = () => {
     }, [])
 
     const handlePasswordReset = async () => {
-        
+        try {
+            const response = await fetch("http://localhost:8000/usuarios/mudar_senha/1", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*",
+                },
+                body: JSON.stringify({
+                    "senhaAtual": senhaAtual,
+                    "novaSenha": novaSenha,
+                }),
+            });
+
+            const message = await response.text();
+            alert(message);
+
+        } catch (err) {
+            console.error("Error during password update:", error);
+            alert("Erro ao atualizar a senha");
+        }
     }
 
     return (
@@ -76,10 +97,28 @@ const Profile = () => {
                         <Text>
                             {status}
                         </Text>
-                    </View>
+                    
                     <Pressable style={styles.pressable} onPress={resetImage}>
                         <Text style={styles.pressable_text}>Resetar Imagem</Text>
                     </Pressable>
+                    </View>
+
+                    <View style={styles.modal_container}> {/* Não é uma modal, apenas estou usando as mesmas formatações. */}
+                        <Text>
+                            {senhaAtual}
+                        </Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Password"
+                            value={novaSenha}
+                            onChangeText={setNovaSenha}
+                            secureTextEntry
+                        />
+                        <Pressable style={styles.pressable} onPress={handlePasswordReset}>
+                            <Text>Mudar Senha</Text>
+                        </Pressable>
+                    </View>
+
                 </View>
                 <Pressable style={styles.pressable}>
                     <Text style={styles.pressable_text}>Ir para a página principal.</Text>

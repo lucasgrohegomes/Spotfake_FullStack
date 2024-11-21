@@ -42,27 +42,22 @@ const ChangePass = async (req, res) => {
         return
     }
 
-    try {
-
-        const user = await User.findByPk(id);
-        if (!user) {
-            res.send("Usuário não encontrado.")
-            return
-        }
-
-        const senhaValida = bcryptjs.compareSync(senhaAtual, user.senha)
-        if (!senhaValida) {
-            res.send('senha invalida')
-            return
-        }
-
-        const senhaCriptografada = bcryptjs.hashSync(novaSenha, 10);
-        user.senha = senhaCriptografada;
-        await user.save();
-        res.send('Senha atualizada com sucesso.')
-    } catch (error) {
-        console.error(error)
+    const user = await User.findByPk(id);
+    if (!user) {
+        res.send("Usuário não encontrado.")
+        return
     }
+
+    const senhaValida = bcryptjs.compareSync(senhaAtual, user.senha)
+    if (!senhaValida) {
+        res.send('senha invalida')
+        return
+    }
+
+    const senhaCriptografada = bcryptjs.hashSync(novaSenha, 10);
+    user.senha = senhaCriptografada;
+    await user.save();
+    res.send('Senha atualizada com sucesso.')
 }
 
 
