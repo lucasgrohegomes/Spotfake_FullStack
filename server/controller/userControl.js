@@ -60,5 +60,25 @@ const ChangePass = async (req, res) => {
     res.send('Senha atualizada com sucesso.')
 }
 
+const ChangeName = async (req, res) => {
+    const { id } = req.params;
+    const { novoNome, novoSobre } = req.body;
 
-export { GetUsers, GetUser, DeleteUser, ChangePass }
+    if (!novoNome || !novoSobre) {
+        res.send('todos os campos devem ser preenchidos');
+        return
+    }
+
+    const user = await User.findByPk(id);
+    if (!user) {
+        res.send("Usuário não encontrado.")
+        return
+    }
+
+    user.nome = novoNome
+    user.sobreNome = novoSobre
+    await user.save();
+    res.send('Alterações de nome de usuário feitas com sucesso.')
+}
+
+export { GetUsers, GetUser, DeleteUser, ChangePass, ChangeName }

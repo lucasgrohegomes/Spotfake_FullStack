@@ -72,7 +72,7 @@ const TelaRegistro = () => {
           />
           <TextInput
             style={styles.input}
-            placeholder="Password"
+            placeholder="Senha"
             value={password}
             onChangeText={setPassword}
             secureTextEntry

@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   scrollview: {
     backgroundColor: "#E31E1E",
+    width: "100%"
   },
 
   modal_scrollview: {
@@ -73,6 +74,14 @@ const styles = StyleSheet.create({
   pressable_text: {
     fontSize: 18,
     color: "white",
+    textAlign: "center",
+    fontFamily: "DancingScript",
+    fontWeight: "bold",
+  },
+
+  black_text: {
+    fontSize: 18,
+    color: "black",
     textAlign: "center",
     fontFamily: "DancingScript",
     fontWeight: "bold",
