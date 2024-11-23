@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
 import { Link, router } from "expo-router";
 import { useFonts } from "expo-font";
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import styles from "../Style/Style";
+import styles from "../Style";
+import { LoginContext } from "../../scripts/LoginContext";
 
 const TelaLogin = () => {
-  const [loaded, error] = useFonts({
-    'DancingScript': require('../../assets/fonts/DancingScript-VariableFont_wght.ttf'),
-  });
+  const { token, setToken } = useContext(LoginContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fontsLoaded] = useFonts({
+    'DancingScript': require('../../assets/fonts/DancingScript-VariableFont_wght.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   const handleSignin = async () => {
     try {
@@ -26,17 +31,18 @@ const TelaLogin = () => {
         }),
       });
 
-      const message = await response.text();
-      alert(message);
-      
+      const data = await response.json();
+      console.log(response);
 
-      if (message === "Usuario logado com sucesso!") {
-        await AsyncStorage.setItem('usuarioId', message.usuarioId);
-        router.push("/Main/Profile");
+      if (response.ok) {
+        console.log("Login realizado com sucesso!");
+        setToken(JSON.stringify(data.tokenJWT))
+        router.push("/Profile");
 
-      } else if (message === "Admin logado com sucesso!") {
-        router.push("/Admin/AdmHome")
-      }
+      } else {
+        console.log("Erro ao realizar login:", data.error);
+        alert(data.error);
+    }
 
     } catch (error) {
       console.error("Error during login:", error);
@@ -65,14 +71,19 @@ const TelaLogin = () => {
             secureTextEntry
           />
           <Pressable onPress={handleSignin} style={styles.pressable}>
-            <Text style={styles.pressable_text}>LogIn</Text>
+            <Text style={styles.pressable_text}>Login</Text>
           </Pressable>
 
-          <Link href={"http://localhost:8081/Auth/Registro"}>
+          <Link href={"/Registro"}>
             <Pressable style={styles.link_pressable}>
               <Text style={styles.link_text}>Registrar</Text>
             </Pressable>
           </Link>
+
+          <Pressable style={styles.link_pressable} onPress={() => { router.push('/') }}>
+            <Text style={styles.link_text}>Voltar</Text>
+          </Pressable>
+
         </View>
       </View>
     </ScrollView>

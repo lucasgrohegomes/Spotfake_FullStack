@@ -40,6 +40,9 @@ const User = sequelize.define('user', {
     cpf: {
         type: Sequelize.DataTypes.STRING,
         allowNull: true,
+    },
+    foto: {
+        type: Sequelize.DataTypes.STRING
     }
 })
 

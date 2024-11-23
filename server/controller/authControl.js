@@ -12,7 +12,7 @@ const SignUp = async (req, res) => {
     const userExiste = await User.findOne({ where: { email: email } })
     console.log(userExiste)
     if (userExiste) {
-        res.send('usuario já existe.')
+        res.send('Esse usuário já existe.')
         return
     }
     const senhaCriptografada = bcryptjs.hashSync(senha, 10)
@@ -25,21 +25,17 @@ const SignIn = async (req, res) => {
     const { email, senha } = req.body
 
     if (!email || !senha) {
-        res.send('todos os campos devem ser preenchidos');
-        return
+        return res.status(400).json({ error: 'Todos os campos devem ser preenchidos.' });
     }
 
     const userExiste = await User.findOne({ where: { email: email } })
-    console.log(!userExiste)
     if (!userExiste) {
-        res.send('este usuario não existe.')
-        return
+        return res.status(404).json({ error: 'Esse usuário não existe.' });
     }
 
     const senhaValida = bcryptjs.compareSync(senha, userExiste.senha)
     if (!senhaValida) {
-        res.send('senha invalida')
-        return
+        return res.status(401).json({ error: 'Senha inválida.' });
     }
 
     const token = jsonwebtoken.sign(
@@ -52,12 +48,9 @@ const SignIn = async (req, res) => {
         { expiresIn: 1000 * 60 * 5 }
     )
 
-    if(userExiste.nome === "admin" && userExiste.email === "admin"){
-        res.send('Admin logado com sucesso!')
-    }
-    else{
-        res.send('Usuario logado com sucesso!')
-    }
+    res.json({
+        tokenJWT: token
+    })
     
 }
 

@@ -27,6 +27,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
+  profile_container: {
+    padding: 80,
+    backgroundColor: "white",
+    width: 400,
+    borderRadius: 10,
+  },
+
   container: {
     flex: 1,
     backgroundColor: "white",
@@ -93,9 +100,10 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
     borderRadius: 100,
+    alignSelf: "center",
   },
 
   link_pressable: {

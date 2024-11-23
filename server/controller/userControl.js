@@ -7,25 +7,25 @@ const GetUsers = async (req, res) => {
 }
 
 const GetUser = async (req, res) => {
-    const { email } = req.body
+    const data = req.body
 
-    if (!email) {
+    if (!data.email) {
         res.send('Insira o email do usuário na qual você gostaria de verificar.');
         return
     }
-    const user = await User.findOne({ where: { email: email } })
+    const user = await User.findOne({ where: { email: data.email }, attributes: ['nome', 'sobreNome', 'email', 'status', 'dataNascimento', 'foto'] })
     res.send(user)
 }
 
 const DeleteUser = async (req, res) => {
-    const { email } = req.body
+    const data = req.body
 
-    if (!email) {
+    if (!data.email) {
         res.send('Insira o email do usuário na qual você gostaria de deletar.');
         return
     }
 
-    const user = await User.destroy({ where: { email: email } })
+    const user = await User.destroy({ where: { email: data.email } })
     if (user) {
         res.send("Usuário deletado");
     } else {
@@ -34,51 +34,35 @@ const DeleteUser = async (req, res) => {
 }
 
 const ChangePass = async (req, res) => {
-    const { id } = req.params;
-    const { senhaAtual, novaSenha } = req.body;
-
-    if (!senhaAtual || !novaSenha) {
-        res.send('todos os campos devem ser preenchidos');
-        return
-    }
-
-    const user = await User.findByPk(id);
+    const data = req.body;
+    const user = await User.findOne({ where: { email: data.email } });
     if (!user) {
         res.send("Usuário não encontrado.")
         return
     }
 
-    const senhaValida = bcryptjs.compareSync(senhaAtual, user.senha)
-    if (!senhaValida) {
-        res.send('senha invalida')
-        return
-    }
+    const senhaCriptografada = bcryptjs.hashSync(data.senha, 10);
 
-    const senhaCriptografada = bcryptjs.hashSync(novaSenha, 10);
     user.senha = senhaCriptografada;
     await user.save();
     res.send('Senha atualizada com sucesso.')
 }
 
-const ChangeName = async (req, res) => {
-    const { id } = req.params;
-    const { novoNome, novoSobre } = req.body;
+const SaveProfilePic = async (req, res) => {
+    try {
+        const data = req.body
+        const user = await User.findOne({ where: { email: data.email } })
+        if (!user) {
+            return res.send("Usuário não encontrado.")
+        }
 
-    if (!novoNome || !novoSobre) {
-        res.send('todos os campos devem ser preenchidos');
-        return
+        console.log(data.foto)
+        const update = await User.update({ foto: data.foto }, { where: { email: data.email } })
+        res.send('Foto de perfil atualizada com sucesso.')
+    } catch (error) {
+        console.log(error)
     }
-
-    const user = await User.findByPk(id);
-    if (!user) {
-        res.send("Usuário não encontrado.")
-        return
-    }
-
-    user.nome = novoNome
-    user.sobreNome = novoSobre
-    await user.save();
-    res.send('Alterações de nome de usuário feitas com sucesso.')
+    
 }
 
-export { GetUsers, GetUser, DeleteUser, ChangePass, ChangeName }
+export { GetUsers, GetUser, DeleteUser, ChangePass, SaveProfilePic }
