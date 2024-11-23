@@ -143,9 +143,11 @@ const Profile = () => {
                     {/* <Text style={styles.black_text}>{`Nome Completo: ${userData.nome} ${userData.sobreNome}`}</Text> */}
                     {/* <Text style={styles.black_text}>{`Status: ${userData.status}`}</Text> */}
 
-                    <Pressable style={styles.pressable} onPress={() => {
-                        updatePic()
-                    }}>
+                    <Text style={styles.black_text}>{`Nome Completo:   ${userData.nome} ${userData.sobreNome}`}</Text>
+                    <Text style={styles.black_text}>{`Status:   ${userData.status}`}</Text>
+                    <Text style={styles.black_text}>{`Quoficiente de Inteligência:   ${2}`}</Text>
+
+                    <Pressable style={styles.pressable} onPress={() => updatePic()}>
                         <Text style={styles.pressable_text}>Salvar Imagem</Text>
                     </Pressable>
                 </View>
