@@ -34,7 +34,7 @@ const TelaLogin = () => {
       const data = await response.json();
       console.log(response);
 
-      if (response.ok) {
+      if (response.ok) { 
         console.log("Login realizado com sucesso!");
         setToken(JSON.stringify(data.tokenJWT))
         router.push("/Profile");

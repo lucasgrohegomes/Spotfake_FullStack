@@ -7,6 +7,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { jwtDecode } from 'jwt-decode'
 import { LoginContext } from "../../scripts/LoginContext";
 
+
 const Profile = () => {
     const { foto, setFoto, token, userData, setUserData } = useContext(LoginContext)
     const info = jwtDecode(token)
@@ -59,10 +60,9 @@ const Profile = () => {
         try {
             const data = {
                 "file": foto,
-                "upload_preset": "ml_default",
-                "name": "teste"
+                "upload_preset": "ml_default"
             }
-            const res = await fetch('https://api.cloudinary.com/v1_1/ds4obhf70/upload',
+            const res = await fetch('https://api.cloudinary.com/v1_1/dsoehv79q/upload',
                 {
                     method: 'POST',
                     headers: {
@@ -73,13 +73,10 @@ const Profile = () => {
             const result = await res.json()
             console.log(result.url)
 
-            if (!foto) {
-                return handleSendImage()
-            } else {
-                setFormData({ ...formData, foto: result.url })
-                console.log(formData.foto)
-                updatePic();
-            }
+            setFormData({ ...formData, foto: result.url })
+            console.log(formData.foto)
+            updatePic();
+
 
         } catch (error) {
             console.log(error)
