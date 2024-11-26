@@ -7,7 +7,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { jwtDecode } from 'jwt-decode'
 import { LoginContext } from "../../scripts/LoginContext";
 
-
+// A FOTO NÃO SALVA SOCORRO
 const Profile = () => {
     const { foto, setFoto, token, userData, setUserData } = useContext(LoginContext)
     const info = jwtDecode(token)
