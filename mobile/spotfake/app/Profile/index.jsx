@@ -55,12 +55,13 @@ const Profile = () => {
             handleSendImage();
         }
     }
-
+    
     const handleSendImage = async () => {
         try {
             const data = {
                 "file": foto,
-                "upload_preset": "ml_default"
+                "upload_preset": "ml_default",
+                "name": "teste"
             }
             const res = await fetch('https://api.cloudinary.com/v1_1/dsoehv79q/upload',
                 {
