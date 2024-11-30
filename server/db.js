@@ -46,7 +46,7 @@ const User = sequelize.define('user', {
     }
 })
 
-const Artista = sequelize.define('Artist', {
+const Artista = sequelize.define('artists', {
     nome: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
@@ -62,7 +62,7 @@ const Artista = sequelize.define('Artist', {
 })
 
 
-const Album = sequelize.define('Album', {
+const Album = sequelize.define('albums', {
     title: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
@@ -78,16 +78,16 @@ const Album = sequelize.define('Album', {
 });
 
 Album.belongsTo(Artista, {
-    foreignKey: 'artistaId',
+    foreignKey: 'artista_id',
     onDelete: 'CASCADE',
 });
 
 Artista.hasMany(Album, {
-    foreignKey: 'artistaId',
+    foreignKey: 'artista_id',
     as: 'Albums'
   });
 
-const Musica = sequelize.define('Musica', {
+const Musica = sequelize.define('musicas', {
     titulo: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false,
@@ -103,15 +103,15 @@ const Musica = sequelize.define('Musica', {
 });
 
 Musica.belongsTo(Album, {
-    foreignKey: 'albumId',
+    foreignKey: 'album_id',
     onDelete: 'CASCADE',
 });
 Musica.belongsTo(Artista, {
-    foreignKey: 'artistaId',
+    foreignKey: 'artista_id',
     onDelete: 'CASCADE',
 });
 Album.hasMany(Musica, {
-    foreignKey: 'albumId',
+    foreignKey: 'album_id',
     as: 'Musicas'
   });
 

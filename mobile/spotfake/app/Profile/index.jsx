@@ -1,16 +1,20 @@
 import React, { useContext, useState, useEffect } from "react";
 import { View, Text, Pressable, Image, TextInput, ScrollView } from "react-native";
-import { Link } from "expo-router";
+import { router } from "expo-router";
 import { useFonts } from "expo-font";
 import styles from "../Style";
 import * as ImagePicker from 'expo-image-picker';
 import { jwtDecode } from 'jwt-decode'
 import { LoginContext } from "../../scripts/LoginContext";
 
-// A FOTO NÃO SALVA SOCORRO
 const Profile = () => {
     const { foto, setFoto, token, userData, setUserData } = useContext(LoginContext)
     const info = jwtDecode(token)
+    const data = {
+        "file": foto,
+        "upload_preset": "ml_default",
+        "name": "teste"
+    }
     const [formData, setFormData] = useState({ foto: '', email: info.email, senha: '' })
     const [fontsLoaded] = useFonts({
         'DancingScript': require('../../assets/fonts/DancingScript-VariableFont_wght.ttf'),
@@ -58,11 +62,6 @@ const Profile = () => {
     
     const handleSendImage = async () => {
         try {
-            const data = {
-                "file": foto,
-                "upload_preset": "ml_default",
-                "name": "teste"
-            }
             const res = await fetch('https://api.cloudinary.com/v1_1/dsoehv79q/upload',
                 {
                     method: 'POST',
@@ -162,12 +161,9 @@ const Profile = () => {
                         <Text style={styles.pressable_text}>Mudar Senha</Text>
                     </Pressable>
                 </View>
-
-                <Link href={'/Home'}>
-                    <Pressable style={styles.pressable}>
+                <Pressable style={styles.pressable} onPress={ () => { router.back() }}>
                         <Text style={styles.pressable_text}>Ir para a página principal.</Text>
-                    </Pressable>
-                </Link>
+                </Pressable>
             </View>
         </ScrollView>
     );

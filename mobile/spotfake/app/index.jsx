@@ -30,7 +30,6 @@ const First = () => {
                             <Text style={styles.link_text}>Entrar</Text>
                         </Pressable>
                     </Link>
-
                 </View>
             </View>
         </ScrollView>

@@ -58,6 +58,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
+  home_container: {
+    flex: 1,
+    flexDirection: "column-reverse",
+  },
+
+  navbar: {
+    flex: 1,
+    backgroundColor: "#E31E1E",
+    alignItems: "center"
+  },
+
   input: {
     height: 40,
     width: 300,
@@ -106,6 +117,12 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 
+  profile: {
+    width: 50,
+    height: 50,
+    borderRadius: 100
+  },
+
   link_pressable: {
     height: 30,
     width: 150,
@@ -121,6 +138,15 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "DancingScript",
     fontWeight: "bold",
+  },
+
+  list_container: {
+    flex: 1,
+    backgroundColor: "white",
+    padding: 40,
+    margin: 10,
+    border: "solid",
+    borderWidth: 5,
   }
 });
 
