@@ -58,17 +58,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  home_container: {
-    flex: 1,
-    flexDirection: "column-reverse",
-  },
-
-  navbar: {
-    flex: 1,
-    backgroundColor: "#E31E1E",
-    alignItems: "center"
-  },
-
   input: {
     height: 40,
     width: 300,
@@ -117,12 +106,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
 
-  profile: {
-    width: 50,
-    height: 50,
-    borderRadius: 100
-  },
-
   link_pressable: {
     height: 30,
     width: 150,
@@ -140,14 +123,97 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
-  list_container: {
+  home_container: {
     flex: 1,
+    flexDirection: "column",
+  },
+
+  list: {
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+
+  list_container: {
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "white",
-    padding: 40,
-    margin: 10,
+    padding: 30,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+
+  navbar: {
+    display: "flex",
+    backgroundColor: "#E31E1E",
+    alignItems: "center",
+
+  },
+
+  navbar_pressable: {
+    flex: 1,
+    height: 60,
+    backgroundColor: "#E31E1E",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  footer: {
+    flex: 0.15,
+    paddingTop: 10,
+    backgroundColor: '#bb2424',
+    flexDirection: 'row',
+    height: 100,
+    justifyContent: "space-around"
+  },
+
+  profile: {
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+  },
+
+  artist_photo: {
+    width: 140,
+    height: 140,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     border: "solid",
-    borderWidth: 5,
-  }
+    borderColor: "#bb2424",
+    borderBottomColor: '#E31E1E'
+  },
+
+  artist_button: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: 140,
+    height: 180,
+    backgroundColor: '#E31E1E',
+    borderRadius: 20,
+  },
+
+  album_photo: {
+    width: 300,
+    height: 180,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    border: "solid",
+    borderColor: "#bb2424",
+    borderBottomColor: '#E31E1E'
+  },
+
+  album_button: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: 300,
+    height: 230,
+    backgroundColor: '#E31E1E',
+    borderRadius: 20
+  },
+
+
 });
 
 export default styles;
