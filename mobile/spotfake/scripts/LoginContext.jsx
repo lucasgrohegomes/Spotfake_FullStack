@@ -4,7 +4,7 @@ export const LoginContext = createContext();
 
 export const LoginProvider = ({ children }) => {
     const [token, setToken] = useState('');
-    const [foto, setFoto] = useState('https://placeholder.pics/svg/300');
+    const [foto, setFoto] = useState('https://placeholder.pics/svg/100');
     const [userData, setUserData] = useState({})
 
     return (

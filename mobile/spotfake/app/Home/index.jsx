@@ -24,13 +24,19 @@ export default function Home() {
     const [artists, setArtists] = useState([])
     const [albums, setAlbums] = useState([])
 
-    if(artista){
-        router.push("/Artista")
-    }
+    useEffect(() => {
+        if (artista) {
+            router.push("/Artista");
+        }
+        if (album) {
+            router.push("/Album");
+        }
+    }, [artista, album]);
 
-    if(album){
-        router.push("/Album")
-    }
+    useEffect(() => {
+        setAlbum(null)
+        setArtista(null)
+    }, [])
 
     useEffect(() => {
         const getUserData = async () => {

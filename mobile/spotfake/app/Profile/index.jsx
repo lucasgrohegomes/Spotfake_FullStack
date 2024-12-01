@@ -161,9 +161,6 @@ const Profile = () => {
                         <Text style={styles.pressable_text}>Mudar Senha</Text>
                     </Pressable>
                 </View>
-                <Pressable style={styles.pressable} onPress={ () => { router.back() }}>
-                        <Text style={styles.pressable_text}>Ir para a página principal.</Text>
-                </Pressable>
             </View>
         </ScrollView>
     );

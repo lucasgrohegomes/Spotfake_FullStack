@@ -17,16 +17,16 @@ function MainLayout() {
                 headerTintColor: 'white'
             }}>
                 <Stack.Screen name='index' options={{ headerTitle: 'Inicial' }} />
-                <Stack.Screen name='Pagamento/index' options={{ headerTitle: 'Pague pls' }} />
                 <Stack.Screen name='Registro/index' options={{ headerTitle: 'Registro' }} />
                 <Stack.Screen name='Login/index' options={{ headerTitle: 'Login' }} />
                 <Stack.Screen name='Profile/index' options={{ headerTitle: 'Perfil' }} />
                 <Stack.Screen name='Home/index' options={{ headerTitle: 'Home' }} />
                 <Stack.Screen name='Album/index' options={{ headerTitle: 'Album' }} />
                 <Stack.Screen name='Artista/index' options={{ headerTitle: 'Artista' }} />
+                <Stack.Screen name='Musica/index' options={{ headerTitle: 'Musica' }} />
             </Stack>
             {
-                segments[0] === 'Home' || segments[0] === 'Album' || segments[0] === 'Artista' && (
+                (segments[0] === 'Home' || segments[0] === 'Album' || segments[0] === 'Artista') && (
                     <View style={styles.footer}>
                         <Pressable onPress={() => { router.push('/Profile') }} style={styles.navbar_pressable} >
                             <Image source={{ uri: foto }} style={styles.profile} />

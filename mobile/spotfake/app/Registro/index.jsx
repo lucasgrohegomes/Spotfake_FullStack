@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Pressable, Image, ScrollView } from "react-native";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 import { useFonts } from "expo-font";
 import styles from "../Style";
 
@@ -12,7 +12,7 @@ const TelaRegistro = () => {
   if (!fontsLoaded) {
     return null;
   }
-  
+
   const [nome, setNome] = useState("");
   const [sobreNome, setSobreNome] = useState("");
   const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ const TelaRegistro = () => {
       const message = await response.text();
       alert(message);
       if (message === "Usuario registrado com sucesso!") {
-        router.push("/Login")
+        router.back()
       }
 
     } catch (error) {
@@ -94,15 +94,6 @@ const TelaRegistro = () => {
             <Text style={styles.pressable_text}>SignUp</Text>
           </Pressable>
 
-          <Link href={"/Login"}>
-            <Pressable style={styles.link_pressable}>
-              <Text style={styles.link_text}>Entrar</Text>
-            </Pressable>
-          </Link>
-
-          <Pressable style={styles.link_pressable} onPress={() => router.push('/')}>
-            <Text style={styles.link_text}>Voltar</Text>
-          </Pressable>
         </View>
       </View>
     </ScrollView>

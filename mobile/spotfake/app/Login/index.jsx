@@ -35,7 +35,7 @@ const TelaLogin = () => {
       console.log(response);
 
       if (response.ok) { 
-        console.log("Login realizado com sucesso!");
+        alert("Login realizado com sucesso!");
         setToken(JSON.stringify(data.tokenJWT))
         router.push("/Home");
 
@@ -72,16 +72,6 @@ const TelaLogin = () => {
           />
           <Pressable onPress={handleSignin} style={styles.pressable}>
             <Text style={styles.pressable_text}>Login</Text>
-          </Pressable>
-
-          <Link href={"/Registro"}>
-            <Pressable style={styles.link_pressable}>
-              <Text style={styles.link_text}>Registrar</Text>
-            </Pressable>
-          </Link>
-
-          <Pressable style={styles.link_pressable} onPress={() => { router.push('/') }}>
-            <Text style={styles.link_text}>Voltar</Text>
           </Pressable>
 
         </View>

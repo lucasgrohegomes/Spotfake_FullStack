@@ -17,11 +17,32 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+    width: 400,
+    justifyContent: "center",
+    padding: 16,
+    margin: 25,
+    alignItems: "center",
+    borderRadius: 10,
+  },
+
   main_container: {
     flex: 1,
     backgroundColor: "white",
-    width: 1300,
+    width: 400,
+    justifyContent: "center",
     padding: 16,
+    margin: 25,
+    alignItems: "center",
+    borderRadius: 10,
+  },
+
+  amazing_container: {
+    backgroundColor: "white",
+    justifyContent: "center",
+    padding: 20,
     margin: 25,
     alignItems: "center",
     borderRadius: 10,
@@ -31,17 +52,6 @@ const styles = StyleSheet.create({
     padding: 80,
     backgroundColor: "white",
     width: 400,
-    borderRadius: 10,
-  },
-
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    width: 400,
-    justifyContent: "center",
-    padding: 16,
-    margin: 25,
-    alignItems: "center",
     borderRadius: 10,
   },
 
@@ -140,7 +150,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white",
-    padding: 30,
+    padding: 40,
     marginTop: 5,
     marginBottom: 5,
   },
@@ -172,7 +182,10 @@ const styles = StyleSheet.create({
   profile: {
     width: 50,
     height: 50,
+    borderWidth: 3,
+    borderColor: "white",
     borderRadius: 100,
+    backgroundColor: "white"
   },
 
   artist_photo: {
@@ -212,6 +225,42 @@ const styles = StyleSheet.create({
     backgroundColor: '#E31E1E',
     borderRadius: 20
   },
+
+  music_container: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomColor: 'black',
+    borderBottomWidth: 2
+  },
+
+  big_photo: {
+    width: 600,
+    height: 350
+  },
+
+  lil_photo: {
+    width: 40,
+    height: 40,
+    borderRadius: 40,
+    borderWidth: 1,
+    borderColor: 'white'
+  },
+
+  lil_button: {
+    flexDirection: "row",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 200
+  },
+
+  button_container: {
+    flexDirection: "row",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: 300
+  }
 
 
 });
