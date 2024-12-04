@@ -1,15 +1,18 @@
 import Sequelize, { DataTypes } from 'sequelize'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const sequelize = new Sequelize(
-    'spotfake',
-    'postgres',
-    'postgres',
+    process.env.DBNAME,     // Nome do banco de dados
+    process.env.DBUSER,     // Usuário do banco de dados
+    process.env.DBPASSWORD, // Senha do banco de dados
     {
-        host: 'localhost',
-        port: 5432,
-        dialect: 'postgres'
+        host: process.env.DBHOST, // Host do banco de dados
+        port: process.env.DBPORT, // Porta do banco de dados
+        dialect: 'postgres'        // Dialeto do banco de dados
     }
 )
+
 const User = sequelize.define('user', {
     nome: {
         type: Sequelize.DataTypes.STRING,
@@ -61,7 +64,6 @@ const Artista = sequelize.define('artists', {
     }
 })
 
-
 const Album = sequelize.define('albums', {
     title: {
         type: Sequelize.DataTypes.STRING,
@@ -85,7 +87,7 @@ Album.belongsTo(Artista, {
 Artista.hasMany(Album, {
     foreignKey: 'artista_id',
     as: 'Albums'
-  });
+});
 
 const Musica = sequelize.define('musicas', {
     titulo: {
@@ -106,14 +108,16 @@ Musica.belongsTo(Album, {
     foreignKey: 'album_id',
     onDelete: 'CASCADE',
 });
+
 Musica.belongsTo(Artista, {
     foreignKey: 'artista_id',
     onDelete: 'CASCADE',
 });
+
 Album.hasMany(Musica, {
     foreignKey: 'album_id',
     as: 'Musicas'
-  });
+});
 
 const criarTabelas = () => {
     sequelize.authenticate().then(() => {
